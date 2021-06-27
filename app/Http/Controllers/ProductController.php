@@ -21,4 +21,9 @@ class ProductController extends Controller
         return view('products.index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
+    public function create()
+    {  
+        return view('products.create');
+    }
 }
