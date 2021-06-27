@@ -38,4 +38,10 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('success','User created successfully');
     }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+        return view('users.show',compact('user'));
+    }
 }
