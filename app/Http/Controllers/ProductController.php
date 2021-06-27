@@ -14,4 +14,11 @@ class ProductController extends Controller
         $this->middleware('permission:product-edit', ['only' => ['edit','update']]);
         $this->middleware('permission:product-delete', ['only' => ['destroy']]);
     }
+
+    public function index()
+    {
+        $products = Product::latest()->paginate(5);
+        return view('products.index',compact('products'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
 }
